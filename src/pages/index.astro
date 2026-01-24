@@ -68,33 +68,36 @@
         z-index: 1;
       }
 
-.brain-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(75vw, 550px);
-  z-index: 2;
-  pointer-events: none;
-}
+	  .brain-container {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: min(75vw, 550px);
+		z-index: 2;
+		pointer-events: none;
+		animation: brainFadeIn 3s ease-out forwards;
+		}
 
-      @keyframes brainFadeIn {
-        0% {
-          opacity: 0;
-          filter: blur(20px);
-          transform: translate(-50%, -50%) scale(0.9);
-        }
-        100% {
-          opacity: 1;
-          filter: blur(0);
-          transform: translate(-50%, -50%) scale(1);
-        }
-      }
+		@keyframes brainFadeIn {
+		0% {
+			opacity: 0;
+			filter: blur(15px);
+		}
+		100% {
+			opacity: 1;
+			filter: blur(0);
+		}
+		}
 
 		.brain-image {
 		width: 100%;
 		height: auto;
-		opacity: 0.5;
+		mix-blend-mode: screen;
+		opacity: 0.4;
+		filter: hue-rotate(240deg) saturate(0.7) brightness(1.2);
+		mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 70%);
+		-webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 70%);
 		}
 
       main {
