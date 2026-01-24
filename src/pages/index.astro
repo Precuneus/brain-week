@@ -7,115 +7,29 @@
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Brain Week 2026 - University of Białystok, March 9-13" />
+    <meta name="description" content="Brain Week 2026 - Uniwersytet w Białymstoku, 9-13 marca. Biologiczne i sztuczne sieci neuronowe." />
     <title>Brain Week 2026 | UwB</title>
   </head>
   <body>
-    <div class="fog-layer"></div>
-    <div class="fog-layer fog-2"></div>
+    <!-- Network canvas -->
+    <canvas id="network"></canvas>
     
+    <!-- Brain image -->
+    <div class="brain-container">
+      <img src="/brain-lateral.png" alt="" class="brain-image" />
+    </div>
+    
+    <!-- Content -->
     <main>
-      <div class="brain-container">
-        <svg class="brain" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
-          <!-- Anatomically-inspired brain - lateral view -->
-          
-          <!-- Brain stem -->
-          <path d="M95 145 Q90 155 88 165 Q87 172 92 175 Q97 177 102 175 Q107 172 106 165 Q104 155 99 145" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="1" class="brain-detail"/>
-          
-          <!-- Cerebellum -->
-          <path d="M75 130 Q65 135 60 145 Q58 155 65 160 Q75 165 90 160 Q95 155 95 148" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.8" class="brain-detail"/>
-          <path d="M63 148 Q70 145 75 148" fill="none" stroke="url(#brainGradient)" stroke-width="0.4" class="brain-detail"/>
-          <path d="M65 153 Q73 150 80 153" fill="none" stroke="url(#brainGradient)" stroke-width="0.4" class="brain-detail"/>
-          
-          <!-- Main cerebrum outline - lateral view silhouette -->
-          <path d="M45 95 
-                   Q30 85 28 70 
-                   Q26 55 35 42
-                   Q45 28 65 22
-                   Q85 16 105 18
-                   Q130 20 150 30
-                   Q168 42 172 60
-                   Q175 80 168 100
-                   Q160 118 145 130
-                   Q125 142 100 145
-                   Q80 146 65 140
-                   Q50 132 45 115
-                   Q43 105 45 95Z" 
-                fill="none" 
-                stroke="url(#brainGradient)" 
-                stroke-width="1.2"
-                class="brain-outline"/>
-          
-          <!-- Lateral sulcus (Sylvian fissure) - major landmark -->
-          <path d="M50 95 Q75 85 105 80 Q130 76 155 85" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.8" class="brain-detail sulcus-major"/>
-          
-          <!-- Central sulcus - separates frontal and parietal -->
-          <path d="M115 35 Q110 55 108 75 Q106 90 110 100" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.7" class="brain-detail sulcus-major"/>
-          
-          <!-- Frontal lobe gyri -->
-          <path d="M42 75 Q55 70 68 73 Q80 70 90 75" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
-          <path d="M38 60 Q52 55 65 58 Q78 54 92 60 Q100 56 108 62" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
-          <path d="M42 48 Q58 42 75 45 Q88 41 100 47" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
-          <path d="M55 32 Q72 28 88 32 Q100 28 110 35" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
-          
-          <!-- Parietal lobe gyri -->
-          <path d="M120 45 Q135 40 150 48 Q162 44 168 55" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
-          <path d="M118 60 Q132 55 148 62 Q160 58 170 68" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
-          <path d="M115 75 Q128 70 142 77 Q155 73 165 82" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
-          
-          <!-- Temporal lobe gyri -->
-          <path d="M52 108 Q70 102 88 108 Q100 104 108 110" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
-          <path d="M58 120 Q75 115 92 120 Q105 116 115 122" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
-          <path d="M68 132 Q85 128 100 133 Q115 130 125 136" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
-          
-          <!-- Occipital lobe gyri -->
-          <path d="M150 95 Q158 100 162 110 Q165 118 160 128" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
-          <path d="M142 105 Q150 112 152 122 Q153 130 148 138" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
-          
-          <!-- Precentral gyrus hint -->
-          <path d="M100 38 Q102 50 100 65 Q99 78 102 88" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.4" class="brain-detail"/>
-          
-          <!-- Postcentral gyrus hint -->
-          <path d="M122 38 Q120 52 122 68 Q124 82 120 95" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.4" class="brain-detail"/>
-
-          <defs>
-            <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#8b5cf6" />
-              <stop offset="50%" stop-color="#a78bfa" />
-              <stop offset="100%" stop-color="#c4b5fd" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      <div class="content">
-        <h1>Brain Week</h1>
-        <p class="year">2026</p>
-        <p class="dates">9–13 March</p>
-        <p class="location">University of Białystok</p>
-        
-        <div class="cta">
-          <a href="#program" class="button">Program</a>
-          <a href="#speakers" class="button button-secondary">Speakers</a>
-        </div>
+      <h1>Brain Week</h1>
+      <p class="year">2026</p>
+      <p class="subtitle">biologiczne i sztuczne sieci neuronowe</p>
+      <p class="dates">9–13 marca</p>
+      <p class="location">Uniwersytet w Białymstoku</p>
+      
+      <div class="cta">
+        <a href="#program" class="button">Program</a>
+        <a href="#prelegenci" class="button button-secondary">Prelegenci</a>
       </div>
     </main>
 
@@ -145,102 +59,123 @@
         position: relative;
       }
 
-      /* Fog layers */
-      .fog-layer {
+      #network {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+        z-index: 1;
+      }
+
+      .brain-container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: min(75vw, 550px);
+        z-index: 2;
         pointer-events: none;
-        background: radial-gradient(ellipse at 50% 80%, 
-          rgba(139, 92, 246, 0.03) 0%, 
-          transparent 50%
-        );
-        animation: fog-drift 20s ease-in-out infinite;
+        opacity: 0;
+        animation: brainFadeIn 3s ease-out 0.5s forwards;
       }
 
-      .fog-2 {
-        background: radial-gradient(ellipse at 30% 60%, 
-          rgba(167, 139, 250, 0.02) 0%, 
-          transparent 40%
-        );
-        animation: fog-drift-2 25s ease-in-out infinite;
+      @keyframes brainFadeIn {
+        0% {
+          opacity: 0;
+          filter: blur(20px);
+          transform: translate(-50%, -50%) scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          filter: blur(0);
+          transform: translate(-50%, -50%) scale(1);
+        }
       }
 
-      @keyframes fog-drift {
-        0%, 100% { transform: translateX(0) translateY(0); opacity: 1; }
-        50% { transform: translateX(30px) translateY(-20px); opacity: 0.7; }
-      }
-
-      @keyframes fog-drift-2 {
-        0%, 100% { transform: translateX(0) translateY(0); opacity: 0.8; }
-        50% { transform: translateX(-40px) translateY(10px); opacity: 1; }
+      .brain-image {
+        width: 100%;
+        height: auto;
+        mix-blend-mode: screen;
+        opacity: 0.3;
+        filter: hue-rotate(240deg) saturate(0.7) brightness(1.1);
+        mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 20%, transparent 70%);
+        -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 20%, transparent 70%);
       }
 
       main {
+        position: relative;
+        z-index: 3;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         padding: 2rem;
-        position: relative;
-        z-index: 1;
-      }
-
-      .brain-container {
-        width: 320px;
-        height: 290px;
-        margin-bottom: 2rem;
-        animation: emerge 2s ease-out forwards;
-        opacity: 0;
-        filter: blur(20px);
-      }
-
-      @keyframes emerge {
-        0% {
-          opacity: 0;
-          filter: blur(20px);
-          transform: scale(0.8) translateY(30px);
-        }
-        100% {
-          opacity: 1;
-          filter: blur(0);
-          transform: scale(1) translateY(0);
-        }
-      }
-
-      .brain {
-        width: 100%;
-        height: 100%;
-        filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.3));
-      }
-
-      .brain-outline {
-        animation: pulse-glow 4s ease-in-out infinite;
-      }
-
-      .brain-detail {
-        opacity: 0.7;
-      }
-
-      .sulcus-major {
-        opacity: 0.85;
-      }
-
-      @keyframes pulse-glow {
-        0%, 100% { filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.5)); }
-        50% { filter: drop-shadow(0 0 15px rgba(167, 139, 250, 0.8)); }
-      }
-
-      .content {
         text-align: center;
-        animation: fade-up 2s ease-out 0.5s forwards;
-        opacity: 0;
       }
 
-      @keyframes fade-up {
+      h1 {
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 300;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #e2e8f0 0%, #a78bfa 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        opacity: 0;
+        animation: fadeUp 1.5s ease-out 0.8s forwards;
+      }
+
+      .year {
+        font-size: clamp(3rem, 10vw, 6rem);
+        font-weight: 100;
+        color: #8b5cf6;
+        letter-spacing: 0.4em;
+        margin: -0.5rem 0 0.8rem;
+        padding-left: 0.4em;
+        opacity: 0;
+        animation: fadeUp 1.5s ease-out 1s forwards;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+        color: #64748b;
+        letter-spacing: 0.2em;
+        margin-bottom: 1.5rem;
+        text-transform: lowercase;
+        opacity: 0;
+        animation: fadeUp 1.5s ease-out 1.2s forwards;
+      }
+
+      .dates {
+        font-size: 1.2rem;
+        color: #94a3b8;
+        letter-spacing: 0.2em;
+        opacity: 0;
+        animation: fadeUp 1.5s ease-out 1.4s forwards;
+      }
+
+      .location {
+        font-size: 1rem;
+        color: #64748b;
+        letter-spacing: 0.1em;
+        margin-bottom: 2.5rem;
+        opacity: 0;
+        animation: fadeUp 1.5s ease-out 1.5s forwards;
+      }
+
+      .cta {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        opacity: 0;
+        animation: fadeUp 1.5s ease-out 1.7s forwards;
+      }
+
+      @keyframes fadeUp {
         0% {
           opacity: 0;
           transform: translateY(20px);
@@ -251,52 +186,12 @@
         }
       }
 
-      h1 {
-        font-size: clamp(2.5rem, 8vw, 4.5rem);
-        font-weight: 300;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        background: linear-gradient(135deg, #e2e8f0 0%, #a78bfa 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .year {
-        font-size: clamp(3rem, 10vw, 6rem);
-        font-weight: 100;
-        color: #8b5cf6;
-        letter-spacing: 0.3em;
-        margin: -0.5rem 0 1.5rem;
-      }
-
-      .dates {
-        font-size: 1.25rem;
-        color: #94a3b8;
-        letter-spacing: 0.2em;
-        margin-bottom: 0.5rem;
-      }
-
-      .location {
-        font-size: 1rem;
-        color: #64748b;
-        letter-spacing: 0.1em;
-        margin-bottom: 2.5rem;
-      }
-
-      .cta {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
       .button {
-        padding: 0.875rem 2rem;
+        padding: 1rem 2.5rem;
         border-radius: 4px;
         text-decoration: none;
-        font-size: 0.9rem;
-        letter-spacing: 0.1em;
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
         text-transform: uppercase;
         transition: all 0.3s ease;
         background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
@@ -319,5 +214,239 @@
         background: rgba(139, 92, 246, 0.1);
       }
     </style>
+
+    <script>
+      const canvas = document.getElementById('network');
+      const ctx = canvas.getContext('2d');
+      
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+      
+      // Pareto distribution
+      function pareto(xMin, alpha) {
+        const u = Math.random();
+        return xMin / Math.pow(u, 1 / alpha);
+      }
+      
+      // Node class
+      class Node {
+        constructor() {
+          this.spawn();
+        }
+        
+        spawn() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.radius = Math.random() * 1.5 + 1;
+          this.baseOpacity = Math.random() * 0.3 + 0.5;
+          this.opacity = 0;
+          
+          const speed = 0.08 + Math.random() * 0.12;
+          const angle = Math.random() * Math.PI * 2;
+          this.vx = Math.cos(angle) * speed;
+          this.vy = Math.sin(angle) * speed;
+          
+          this.maxLife = Math.floor((5 + Math.random() * 15) * 60);
+          this.life = this.maxLife;
+          this.maxConnDist = Math.min(pareto(40, 2.5), 250);
+          
+          this.pulsePhase = Math.random() * Math.PI * 2;
+          this.pulseSpeed = 0.015 + Math.random() * 0.01;
+        }
+        
+        update(nodes) {
+          const attractionRange = 150;
+          const attractionStrength = 0.00012;
+          
+          for (const other of nodes) {
+            if (other === this) continue;
+            
+            const dx = other.x - this.x;
+            const dy = other.y - this.y;
+            const dist = Math.hypot(dx, dy);
+            
+            if (dist < attractionRange && dist > 10) {
+              const force = attractionStrength * (1 - dist / attractionRange);
+              this.vx += (dx / dist) * force;
+              this.vy += (dy / dist) * force;
+            }
+            
+            if (dist < 30 && dist > 0) {
+              const repel = 0.0003 * (1 - dist / 30);
+              this.vx -= (dx / dist) * repel;
+              this.vy -= (dy / dist) * repel;
+            }
+          }
+          
+          this.x += this.vx;
+          this.y += this.vy;
+          
+          this.vx *= 0.998;
+          this.vy *= 0.998;
+          
+          this.vx += (Math.random() - 0.5) * 0.003;
+          this.vy += (Math.random() - 0.5) * 0.003;
+          
+          const speed = Math.hypot(this.vx, this.vy);
+          const maxSpeed = 0.4;
+          const minSpeed = 0.03;
+          if (speed > maxSpeed) {
+            this.vx = (this.vx / speed) * maxSpeed;
+            this.vy = (this.vy / speed) * maxSpeed;
+          } else if (speed < minSpeed && speed > 0) {
+            this.vx = (this.vx / speed) * minSpeed;
+            this.vy = (this.vy / speed) * minSpeed;
+          }
+          
+          const margin = 50;
+          const pushStrength = 0.0005;
+          if (this.x < margin) this.vx += pushStrength * (margin - this.x);
+          if (this.x > canvas.width - margin) this.vx -= pushStrength * (this.x - (canvas.width - margin));
+          if (this.y < margin) this.vy += pushStrength * (margin - this.y);
+          if (this.y > canvas.height - margin) this.vy -= pushStrength * (this.y - (canvas.height - margin));
+          
+          const fadeInEnd = this.maxLife * 0.9;
+          const fadeOutStart = this.maxLife * 0.15;
+          
+          if (this.life > fadeInEnd) {
+            this.opacity = Math.min(this.opacity + 0.02, this.baseOpacity);
+          } else if (this.life < fadeOutStart) {
+            this.opacity = Math.max(this.opacity - 0.015, 0);
+          }
+          
+          this.pulsePhase += this.pulseSpeed;
+          this.life--;
+          
+          if (this.life <= 0) {
+            this.spawn();
+          }
+        }
+        
+        draw() {
+          if (this.opacity < 0.01) return;
+          
+          const pulse = Math.sin(this.pulsePhase) * 0.15 + 0.9;
+          const r = this.radius * pulse;
+          
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(180, 160, 255, ${this.opacity * pulse})`;
+          ctx.fill();
+          
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, r * 3, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(139, 92, 246, ${this.opacity * 0.12})`;
+          ctx.fill();
+        }
+      }
+      
+      // Signal class
+      class Signal {
+        constructor(nodeA, nodeB) {
+          this.nodeA = nodeA;
+          this.nodeB = nodeB;
+          this.pos = 0;
+          this.speed = 0.003 + Math.random() * 0.005;
+          this.direction = Math.random() > 0.5 ? 1 : -1;
+          if (this.direction < 0) this.pos = 1;
+        }
+        
+        update() {
+          this.pos += this.speed * this.direction;
+          return this.pos >= 0 && this.pos <= 1;
+        }
+        
+        draw(opacity) {
+          const x = this.nodeA.x + (this.nodeB.x - this.nodeA.x) * this.pos;
+          const y = this.nodeA.y + (this.nodeB.y - this.nodeA.y) * this.pos;
+          
+          ctx.beginPath();
+          ctx.arc(x, y, 2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(220, 200, 255, ${opacity * 0.8})`;
+          ctx.fill();
+          
+          ctx.beginPath();
+          ctx.arc(x, y, 5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(180, 160, 255, ${opacity * 0.25})`;
+          ctx.fill();
+        }
+      }
+      
+      // Initialize
+      const area = window.innerWidth * window.innerHeight;
+      const nodeCount = Math.floor(area / 5500);
+      
+      const nodes = [];
+      for (let i = 0; i < nodeCount; i++) {
+        nodes.push(new Node());
+      }
+      
+      let signals = [];
+      
+      // Animation loop
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        nodes.forEach(node => node.update(nodes));
+        
+        // Draw connections
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const a = nodes[i];
+            const b = nodes[j];
+            const dist = Math.hypot(a.x - b.x, a.y - b.y);
+            
+            const maxDist = Math.min(a.maxConnDist, b.maxConnDist);
+            
+            if (dist < maxDist) {
+              const strength = 1 - (dist / maxDist);
+              const opacity = strength * Math.min(a.opacity, b.opacity) * 0.45;
+              
+              if (opacity > 0.01) {
+                ctx.beginPath();
+                ctx.moveTo(a.x, a.y);
+                ctx.lineTo(b.x, b.y);
+                ctx.strokeStyle = `rgba(139, 92, 246, ${opacity})`;
+                ctx.lineWidth = strength * 1.2;
+                ctx.stroke();
+                
+                if (Math.random() < 0.0003 * strength) {
+                  signals.push(new Signal(a, b));
+                }
+              }
+            }
+          }
+        }
+        
+        // Update and draw signals
+        signals = signals.filter(signal => {
+          const maxDist = Math.min(signal.nodeA.maxConnDist, signal.nodeB.maxConnDist);
+          const dist = Math.hypot(
+            signal.nodeA.x - signal.nodeB.x,
+            signal.nodeA.y - signal.nodeB.y
+          );
+          if (dist > maxDist) return false;
+          
+          const alive = signal.update();
+          if (alive) {
+            const strength = 1 - (dist / maxDist);
+            const opacity = strength * Math.min(signal.nodeA.opacity, signal.nodeB.opacity);
+            signal.draw(opacity);
+          }
+          return alive;
+        });
+        
+        // Draw nodes
+        nodes.forEach(node => node.draw());
+        
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
+    </script>
   </body>
 </html>
