@@ -7,8 +7,8 @@
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Tydzień Mózgu 2026 - Uniwersytet w Białymstoku, 9-13 marca" />
-    <title>Tydzień Mózgu 2026 | UwB</title>
+    <meta name="description" content="Brain Week 2026 - University of Białystok, March 9-13" />
+    <title>Brain Week 2026 | UwB</title>
   </head>
   <body>
     <div class="fog-layer"></div>
@@ -16,30 +16,86 @@
     
     <main>
       <div class="brain-container">
-        <svg class="brain" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <!-- Stylized brain silhouette -->
-          <path d="M50 10 
-                   C30 10 20 25 20 40 
-                   C20 45 22 50 18 55 
-                   C14 60 15 70 22 75 
-                   C28 80 35 82 40 85 
-                   C45 88 48 90 50 90 
-                   C52 90 55 88 60 85 
-                   C65 82 72 80 78 75 
-                   C85 70 86 60 82 55 
-                   C78 50 80 45 80 40 
-                   C80 25 70 10 50 10Z" 
+        <svg class="brain" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- Anatomically-inspired brain - lateral view -->
+          
+          <!-- Brain stem -->
+          <path d="M95 145 Q90 155 88 165 Q87 172 92 175 Q97 177 102 175 Q107 172 106 165 Q104 155 99 145" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="1" class="brain-detail"/>
+          
+          <!-- Cerebellum -->
+          <path d="M75 130 Q65 135 60 145 Q58 155 65 160 Q75 165 90 160 Q95 155 95 148" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.8" class="brain-detail"/>
+          <path d="M63 148 Q70 145 75 148" fill="none" stroke="url(#brainGradient)" stroke-width="0.4" class="brain-detail"/>
+          <path d="M65 153 Q73 150 80 153" fill="none" stroke="url(#brainGradient)" stroke-width="0.4" class="brain-detail"/>
+          
+          <!-- Main cerebrum outline - lateral view silhouette -->
+          <path d="M45 95 
+                   Q30 85 28 70 
+                   Q26 55 35 42
+                   Q45 28 65 22
+                   Q85 16 105 18
+                   Q130 20 150 30
+                   Q168 42 172 60
+                   Q175 80 168 100
+                   Q160 118 145 130
+                   Q125 142 100 145
+                   Q80 146 65 140
+                   Q50 132 45 115
+                   Q43 105 45 95Z" 
                 fill="none" 
                 stroke="url(#brainGradient)" 
-                stroke-width="0.5"
+                stroke-width="1.2"
                 class="brain-outline"/>
-          <!-- Brain folds suggestion -->
-          <path d="M35 30 C40 35 45 32 50 35 C55 32 60 35 65 30" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.3" class="brain-detail"/>
-          <path d="M30 45 C38 48 45 44 50 48 C55 44 62 48 70 45" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.3" class="brain-detail"/>
-          <path d="M32 60 C40 63 48 58 50 62 C52 58 60 63 68 60" 
-                fill="none" stroke="url(#brainGradient)" stroke-width="0.3" class="brain-detail"/>
+          
+          <!-- Lateral sulcus (Sylvian fissure) - major landmark -->
+          <path d="M50 95 Q75 85 105 80 Q130 76 155 85" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.8" class="brain-detail sulcus-major"/>
+          
+          <!-- Central sulcus - separates frontal and parietal -->
+          <path d="M115 35 Q110 55 108 75 Q106 90 110 100" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.7" class="brain-detail sulcus-major"/>
+          
+          <!-- Frontal lobe gyri -->
+          <path d="M42 75 Q55 70 68 73 Q80 70 90 75" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
+          <path d="M38 60 Q52 55 65 58 Q78 54 92 60 Q100 56 108 62" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
+          <path d="M42 48 Q58 42 75 45 Q88 41 100 47" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
+          <path d="M55 32 Q72 28 88 32 Q100 28 110 35" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
+          
+          <!-- Parietal lobe gyri -->
+          <path d="M120 45 Q135 40 150 48 Q162 44 168 55" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
+          <path d="M118 60 Q132 55 148 62 Q160 58 170 68" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
+          <path d="M115 75 Q128 70 142 77 Q155 73 165 82" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
+          
+          <!-- Temporal lobe gyri -->
+          <path d="M52 108 Q70 102 88 108 Q100 104 108 110" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
+          <path d="M58 120 Q75 115 92 120 Q105 116 115 122" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
+          <path d="M68 132 Q85 128 100 133 Q115 130 125 136" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
+          
+          <!-- Occipital lobe gyri -->
+          <path d="M150 95 Q158 100 162 110 Q165 118 160 128" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
+          <path d="M142 105 Q150 112 152 122 Q153 130 148 138" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.5" class="brain-detail"/>
+          
+          <!-- Precentral gyrus hint -->
+          <path d="M100 38 Q102 50 100 65 Q99 78 102 88" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.4" class="brain-detail"/>
+          
+          <!-- Postcentral gyrus hint -->
+          <path d="M122 38 Q120 52 122 68 Q124 82 120 95" 
+                fill="none" stroke="url(#brainGradient)" stroke-width="0.4" class="brain-detail"/>
+
           <defs>
             <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#8b5cf6" />
@@ -51,14 +107,14 @@
       </div>
 
       <div class="content">
-        <h1>Tydzień Mózgu</h1>
+        <h1>Brain Week</h1>
         <p class="year">2026</p>
-        <p class="dates">9–13 marca</p>
-        <p class="location">Uniwersytet w Białymstoku</p>
+        <p class="dates">9–13 March</p>
+        <p class="location">University of Białystok</p>
         
         <div class="cta">
           <a href="#program" class="button">Program</a>
-          <a href="#prelegenci" class="button button-secondary">Prelegenci</a>
+          <a href="#speakers" class="button button-secondary">Speakers</a>
         </div>
       </div>
     </main>
@@ -134,8 +190,8 @@
       }
 
       .brain-container {
-        width: 280px;
-        height: 280px;
+        width: 320px;
+        height: 290px;
         margin-bottom: 2rem;
         animation: emerge 2s ease-out forwards;
         opacity: 0;
@@ -166,7 +222,11 @@
       }
 
       .brain-detail {
-        opacity: 0.6;
+        opacity: 0.7;
+      }
+
+      .sulcus-major {
+        opacity: 0.85;
       }
 
       @keyframes pulse-glow {
