@@ -235,11 +235,11 @@
       // Node class
       class Node {
         constructor() {
+          this.connectedNodes = new Set();
           this.spawn();
         }
         
         spawn() {
-          // Spawn anywhere on screen
           this.x = Math.random() * canvas.width;
           this.y = Math.random() * canvas.height;
           
@@ -247,48 +247,60 @@
           this.baseOpacity = Math.random() * 0.3 + 0.5;
           this.opacity = 0;
           
+          // Variable base speed - some slow, some fast
+          this.baseSpeed = 0.05 + Math.random() * 0.35;
+          this.currentSpeed = this.baseSpeed;
+          this.targetSpeed = this.baseSpeed;
+          
           // Random initial direction
-          const speed = 0.1 + Math.random() * 0.15;
           const angle = Math.random() * Math.PI * 2;
-          this.vx = Math.cos(angle) * speed;
-          this.vy = Math.sin(angle) * speed;
+          this.vx = Math.cos(angle) * this.currentSpeed;
+          this.vy = Math.sin(angle) * this.currentSpeed;
           
           this.maxLife = Math.floor((5 + Math.random() * 15) * 60);
           this.life = this.maxLife;
-          this.maxConnDist = Math.min(pareto(50, 2.0), 280); // Larger connection range
+          this.maxConnDist = Math.min(pareto(60, 1.3), 500);
           
           this.pulsePhase = Math.random() * Math.PI * 2;
           this.pulseSpeed = 0.015 + Math.random() * 0.01;
           
-          // Not seeking center until connected
           this.seeksCenter = false;
-          this.hasConnected = false;
+          this.connectedNodes.clear();
         }
         
-        // Called when this node forms a connection
-        startSeekingCenter() {
-          if (!this.hasConnected) {
-            this.hasConnected = true;
-            this.seeksCenter = true;
-          }
+        connectTo(other) {
+          this.connectedNodes.add(other);
+          this.seeksCenter = true;
         }
         
         update(nodes) {
+          // Find max speed among connected nodes
+          if (this.connectedNodes.size > 0) {
+            let maxSpeedInGraph = this.baseSpeed;
+            
+            for (const other of this.connectedNodes) {
+              if (other.baseSpeed > maxSpeedInGraph) {
+                maxSpeedInGraph = other.baseSpeed;
+              }
+            }
+            
+            this.targetSpeed = maxSpeedInGraph;
+            // Smooth acceleration (derivative-based)
+            this.currentSpeed += (this.targetSpeed - this.currentSpeed) * 0.02;
+          }
+          
           if (this.seeksCenter) {
-            // Move toward center
             const dx = centerX - this.x;
             const dy = centerY - this.y;
             const dist = Math.hypot(dx, dy);
             
             if (dist > 5) {
-              // Gradually turn toward center
-              const targetVx = (dx / dist) * 0.25;
-              const targetVy = (dy / dist) * 0.25;
-              this.vx += (targetVx - this.vx) * 0.02;
-              this.vy += (targetVy - this.vy) * 0.02;
+              const targetVx = (dx / dist) * this.currentSpeed;
+              const targetVy = (dy / dist) * this.currentSpeed;
+              this.vx += (targetVx - this.vx) * 0.025;
+              this.vy += (targetVy - this.vy) * 0.025;
             }
             
-            // Fade out when close to center
             if (dist < 80) {
               this.opacity = Math.max(this.opacity - 0.025, 0);
               if (this.opacity <= 0) {
@@ -297,7 +309,6 @@
               }
             }
           } else {
-            // Gentle attraction to nearby nodes
             for (const other of nodes) {
               if (other === this) continue;
               
@@ -311,7 +322,6 @@
                 this.vy += (dy / dist) * force;
               }
               
-              // Soft repulsion when very close
               if (dist < 25 && dist > 0) {
                 const repel = 0.0002 * (1 - dist / 25);
                 this.vx -= (dx / dist) * repel;
@@ -319,7 +329,6 @@
               }
             }
             
-            // Soft boundary push
             const margin = 50;
             const pushStrength = 0.0004;
             if (this.x < margin) this.vx += pushStrength * (margin - this.x);
@@ -331,26 +340,18 @@
           this.x += this.vx;
           this.y += this.vy;
           
-          this.vx *= 0.995;
-          this.vy *= 0.995;
-          
-          // Tiny random drift
-          this.vx += (Math.random() - 0.5) * 0.002;
-          this.vy += (Math.random() - 0.5) * 0.002;
-          
-          // Speed limits
+          // Maintain current speed
           const speed = Math.hypot(this.vx, this.vy);
-          const maxSpeed = this.seeksCenter ? 0.4 : 0.3;
-          const minSpeed = 0.02;
-          if (speed > maxSpeed) {
-            this.vx = (this.vx / speed) * maxSpeed;
-            this.vy = (this.vy / speed) * maxSpeed;
-          } else if (speed < minSpeed && speed > 0) {
-            this.vx = (this.vx / speed) * minSpeed;
-            this.vy = (this.vy / speed) * minSpeed;
+          if (speed > 0.01) {
+            const targetMagnitude = this.seeksCenter ? this.currentSpeed : this.baseSpeed;
+            this.vx = (this.vx / speed) * targetMagnitude;
+            this.vy = (this.vy / speed) * targetMagnitude;
           }
           
-          // Fade in/out based on life
+          const driftAngle = Math.random() * Math.PI * 2;
+          this.vx += Math.cos(driftAngle) * 0.001;
+          this.vy += Math.sin(driftAngle) * 0.001;
+          
           const fadeInEnd = this.maxLife * 0.9;
           const fadeOutStart = this.maxLife * 0.15;
           
@@ -388,7 +389,6 @@
         }
       }
       
-      // Signal class
       class Signal {
         constructor(nodeA, nodeB) {
           this.nodeA = nodeA;
@@ -420,9 +420,8 @@
         }
       }
       
-      // Initialize
       const area = window.innerWidth * window.innerHeight;
-      const nodeCount = Math.floor(area / 4500); // More nodes
+      const nodeCount = Math.floor(area / 4500);
       
       const nodes = [];
       for (let i = 0; i < nodeCount; i++) {
@@ -431,13 +430,11 @@
       
       let signals = [];
       
-      // Animation loop
       function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         nodes.forEach(node => node.update(nodes));
         
-        // Draw connections and trigger center-seeking
         for (let i = 0; i < nodes.length; i++) {
           for (let j = i + 1; j < nodes.length; j++) {
             const a = nodes[i];
@@ -448,18 +445,19 @@
             
             if (dist < maxDist) {
               const strength = 1 - (dist / maxDist);
-              const opacity = strength * Math.min(a.opacity, b.opacity) * 0.5;
+              // Ensure long connections are still visible
+              const baseOpacity = 0.08;
+              const opacity = (baseOpacity + strength * 0.45) * Math.min(a.opacity, b.opacity);
               
               if (opacity > 0.02) {
-                // Both nodes now seek center
-                a.startSeekingCenter();
-                b.startSeekingCenter();
+                a.connectTo(b);
+                b.connectTo(a);
                 
                 ctx.beginPath();
                 ctx.moveTo(a.x, a.y);
                 ctx.lineTo(b.x, b.y);
                 ctx.strokeStyle = `rgba(139, 92, 246, ${opacity})`;
-                ctx.lineWidth = strength * 1.5;
+                ctx.lineWidth = 0.5 + strength * 1.5;
                 ctx.stroke();
                 
                 if (Math.random() < 0.0005 * strength) {
@@ -470,7 +468,6 @@
           }
         }
         
-        // Update and draw signals
         signals = signals.filter(signal => {
           const maxDist = Math.min(signal.nodeA.maxConnDist, signal.nodeB.maxConnDist);
           const dist = Math.hypot(
@@ -488,7 +485,6 @@
           return alive;
         });
         
-        // Draw nodes
         nodes.forEach(node => node.draw());
         
         requestAnimationFrame(animate);
