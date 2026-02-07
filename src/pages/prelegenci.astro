@@ -12,10 +12,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Poppins:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/brain-week/global.css" />
   </head>
   <body>
     <div class="container">
-      <!-- Header -->
       <header>
         <div class="header-row">
           <a href="/brain-week/" class="nav-link nav-left">← Strona Główna</a>
@@ -25,10 +25,7 @@
         <p class="subtitle">9-13 marca 2026 • Białystok</p>
       </header>
       
-      <!-- Speakers list -->
       <div class="speakers-list">
-        
-        <!-- Monday -->
         <div class="speaker-card">
           <div class="speaker-photo">👤</div>
           <div class="speaker-content">
@@ -38,13 +35,10 @@
               <span class="talk-label">Wykład</span>
               <span class="talk-date">Poniedziałek, 9 marca</span>
             </p>
-            <p class="speaker-bio tba">
-              Informacje wkrótce.
-            </p>
+            <p class="speaker-bio tba">Informacje wkrótce.</p>
           </div>
         </div>
         
-        <!-- Tuesday -->
         <div class="speaker-card">
           <div class="speaker-photo">👤</div>
           <div class="speaker-content">
@@ -54,13 +48,10 @@
               <span class="talk-label">Wykład</span>
               <span class="talk-date">Wtorek, 10 marca</span>
             </p>
-            <p class="speaker-bio tba">
-              Informacje wkrótce.
-            </p>
+            <p class="speaker-bio tba">Informacje wkrótce.</p>
           </div>
         </div>
         
-        <!-- Wednesday -->
         <div class="speaker-card">
           <div class="speaker-photo">👤</div>
           <div class="speaker-content">
@@ -70,13 +61,10 @@
               <span class="talk-label">Wykład</span>
               <span class="talk-date">Środa, 11 marca</span>
             </p>
-            <p class="speaker-bio tba">
-              Informacje wkrótce.
-            </p>
+            <p class="speaker-bio tba">Informacje wkrótce.</p>
           </div>
         </div>
         
-        <!-- Thursday -->
         <div class="speaker-card">
           <div class="speaker-photo">👤</div>
           <div class="speaker-content">
@@ -86,13 +74,10 @@
               <span class="talk-label">Wykład</span>
               <span class="talk-date">Czwartek, 12 marca</span>
             </p>
-            <p class="speaker-bio tba">
-              Informacje wkrótce.
-            </p>
+            <p class="speaker-bio tba">Informacje wkrótce.</p>
           </div>
         </div>
         
-        <!-- Friday -->
         <div class="speaker-card">
           <div class="speaker-photo">👤</div>
           <div class="speaker-content">
@@ -102,119 +87,18 @@
               <span class="talk-label">Wykład</span>
               <span class="talk-date">Piątek, 13 marca</span>
             </p>
-            <p class="speaker-bio tba">
-              Informacje wkrótce.
-            </p>
+            <p class="speaker-bio tba">Informacje wkrótce.</p>
           </div>
         </div>
-        
       </div>
       
       <p class="footer-note">Lista prelegentów w przygotowaniu. Śledź aktualizacje.</p>
     </div>
 
     <style>
-      :root {
-        --bg-dark: #18181a;
-        --bg-mid: #1a1a1f;
-        --bg-deep: #1c1c24;
-        --text-light: #efdee8;
-        --text-mid: #dddddd;
-        --text-dim: #919598;
-        --accent-violet: #6e27e1;
-        --accent-pink: #f287c8;
-        --accent-cyan: #40d0d5;
-        --accent-grad-start: #0900d6;
-        --accent-grad-end: #ff8cd1;
-        --font-title: 'Orbitron', sans-serif;
-        --font-body: 'Poppins', sans-serif;
-        --font-mono: 'Roboto Mono', monospace;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html, body {
-        height: 100%;
-      }
-
       body {
-        background: linear-gradient(180deg, 
-          var(--bg-dark) 0%, 
-          var(--bg-mid) 30%,
-          var(--bg-deep) 60%,
-          var(--bg-dark) 100%
-        );
-        background-attachment: fixed;
-        color: var(--text-light);
-        font-family: var(--font-body);
-        min-height: 100vh;
         padding: 2rem;
         padding-top: 4rem;
-      }
-
-      .container {
-        max-width: 850px;
-        margin: 0 auto;
-      }
-
-      header {
-        text-align: center;
-        margin-bottom: 3rem;
-      }
-
-      .header-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0.5rem;
-      }
-
-      .nav-link {
-        color: var(--text-dim);
-        text-decoration: none;
-        font-size: 1.1rem;
-        font-weight: 400;
-        letter-spacing: 0.05em;
-        transition: color 0.3s ease;
-        padding: 0.5rem 0;
-        min-width: 150px;
-      }
-
-      .nav-left {
-        text-align: left;
-      }
-
-      .nav-right {
-        text-align: right;
-      }
-
-      .nav-link:hover {
-        color: var(--accent-pink);
-      }
-
-      h1 {
-        font-family: var(--font-title);
-        font-size: clamp(2rem, 6vw, 3.5rem);
-        font-weight: 400;
-        letter-spacing: 0;
-        line-height: 1.5;
-        text-transform: uppercase;
-        background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-pink) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin: 0;
-      }
-
-      .subtitle {
-        color: var(--text-dim);
-        letter-spacing: 0.1em;
-        margin-top: 0.5rem;
-        font-weight: 300;
       }
 
       .speakers-list {
@@ -250,12 +134,9 @@
         font-size: 2.5rem;
       }
 
-      .speaker-content {
-        flex: 1;
-      }
+      .speaker-content { flex: 1; }
 
       .speaker-name {
-        font-family: var(--font-body);
         font-size: 1.4rem;
         font-weight: 600;
         color: var(--text-light);
@@ -298,7 +179,6 @@
         font-size: 0.95rem;
         color: var(--text-mid);
         line-height: 1.7;
-        margin-bottom: 1rem;
         font-weight: 300;
       }
 
@@ -307,57 +187,8 @@
         font-style: italic;
       }
 
-      .speaker-links {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
-
-      .speaker-link {
-        color: var(--accent-violet);
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 500;
-        padding: 0.4rem 0.8rem;
-        border: 1px solid rgba(110, 39, 225, 0.3);
-        border-radius: 4px;
-        transition: all 0.3s ease;
-      }
-
-      .speaker-link:hover {
-        background: rgba(110, 39, 225, 0.15);
-        border-color: var(--accent-violet);
-        color: var(--accent-pink);
-      }
-
-      .footer-note {
-        text-align: center;
-        color: var(--text-dim);
-        font-size: 0.85rem;
-        margin-top: 3rem;
-        font-weight: 300;
-      }
-
-      /* Mobile */
       @media (max-width: 600px) {
-        body {
-          padding: 1rem;
-          padding-top: 2rem;
-        }
-
-        .header-row {
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-
-        .nav-link {
-          font-size: 0.95rem;
-          min-width: auto;
-        }
-
-        .nav-left, .nav-right {
-          text-align: center;
-        }
+        body { padding: 1rem; padding-top: 2rem; }
 
         .speaker-card {
           flex-direction: column;
@@ -371,13 +202,7 @@
           font-size: 2rem;
         }
 
-        .speaker-talk {
-          justify-content: center;
-        }
-
-        .speaker-links {
-          justify-content: center;
-        }
+        .speaker-talk { justify-content: center; }
       }
     </style>
   </body>

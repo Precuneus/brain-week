@@ -1,0 +1,170 @@
+/* CYBERBRAIN 2026 - Global Styles */
+
+:root {
+  /* === PALETTE === */
+  --bg-dark: #18181a;
+  --bg-mid: #1a1a1f;
+  --bg-deep: #1c1c24;
+  
+  --text-light: #efdee8;
+  --text-mid: #dddddd;
+  --text-dim: #919598;
+  
+  --accent-violet: #6e27e1;
+  --accent-pink: #f287c8;
+  --accent-cyan: #40d0d5;
+  --accent-grad-start: #0900d6;
+  --accent-grad-end: #ff8cd1;
+  
+  /* === FONTS === */
+  /* Replace 'Orbitron' with 'RQND Pro' when self-hosted */
+  --font-title: 'Orbitron', sans-serif;
+  --font-body: 'Poppins', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(180deg, 
+    var(--bg-dark) 0%, 
+    var(--bg-mid) 30%,
+    var(--bg-deep) 60%,
+    var(--bg-dark) 100%
+  );
+  background-attachment: fixed;
+  color: var(--text-light);
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+/* === LAYOUT === */
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* === HEADER === */
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+/* === NAVIGATION === */
+.nav-link {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+  padding: 0.5rem 0;
+  min-width: 150px;
+}
+
+.nav-left {
+  text-align: left;
+}
+
+.nav-right {
+  text-align: right;
+}
+
+.nav-link:hover {
+  color: var(--accent-pink);
+}
+
+/* === TYPOGRAPHY === */
+h1 {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-pink) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+  font-weight: 300;
+}
+
+/* === BUTTONS === */
+.button {
+  font-family: var(--font-body);
+  padding: 1rem 2.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-grad-start) 100%);
+  color: white;
+  border: 1px solid transparent;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(110, 39, 225, 0.3);
+}
+
+.button-secondary {
+  background: transparent;
+  border: 1px solid var(--accent-violet);
+  color: white;
+}
+
+.button-secondary:hover {
+  background: rgba(110, 39, 225, 0.1);
+}
+
+/* === FOOTER === */
+.footer-note {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-top: 3rem;
+  font-weight: 300;
+}
+
+/* === MOBILE === */
+@media (max-width: 600px) {
+  .header-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+    min-width: auto;
+  }
+
+  .nav-left, .nav-right {
+    text-align: center;
+  }
+}

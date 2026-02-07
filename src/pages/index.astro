@@ -12,17 +12,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Poppins:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/brain-week/global.css" />
   </head>
   <body>
-    <!-- Network canvas -->
     <canvas id="network"></canvas>
     
-    <!-- Brain image -->
     <div class="brain-container">
       <img src="/brain-week/brain-lateral.png" alt="" class="brain-image" />
     </div>
     
-    <!-- Content -->
     <main>
       <section class="hero">
         <h1>CYBERBRAIN</h1>
@@ -75,53 +73,7 @@
     </main>
 
     <style>
-      :root {
-        /* === PALETTE === */
-        --bg-dark: #18181a;
-        --bg-mid: #1a1a1f;
-        --bg-deep: #1c1c24;
-        
-        --text-light: #efdee8;
-        --text-mid: #dddddd;
-        --text-dim: #919598;
-        
-        --accent-violet: #6e27e1;
-        --accent-pink: #f287c8;
-        --accent-cyan: #40d0d5;
-        --accent-grad-start: #0900d6;
-        --accent-grad-end: #ff8cd1;
-        
-        /* === FONTS === */
-        /* Replace 'Orbitron' with 'RQND Pro' when self-hosted */
-        --font-title: 'Orbitron', sans-serif;
-        --font-body: 'Poppins', sans-serif;
-        --font-mono: 'Roboto Mono', monospace;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html, body {
-        height: 100%;
-        overflow-x: hidden;
-      }
-
-      body {
-        background: linear-gradient(180deg, 
-          var(--bg-dark) 0%, 
-          var(--bg-mid) 30%,
-          var(--bg-deep) 60%,
-          var(--bg-dark) 100%
-        );
-        background-attachment: fixed;
-        color: var(--text-light);
-        font-family: var(--font-body);
-        min-height: 100vh;
-        position: relative;
-      }
+      body { overflow-x: hidden; }
 
       #network {
         position: fixed;
@@ -144,14 +96,8 @@
       }
 
       @keyframes brainFadeIn {
-        0% {
-          opacity: 0;
-          filter: blur(15px);
-        }
-        100% {
-          opacity: 1;
-          filter: blur(0);
-        }
+        0% { opacity: 0; filter: blur(15px); }
+        100% { opacity: 1; filter: blur(0); }
       }
 
       .brain-image {
@@ -182,17 +128,8 @@
         text-align: center;
       }
 
-      h1 {
-        font-family: var(--font-title);
+      .hero h1 {
         font-size: clamp(2.5rem, 8vw, 5rem);
-        font-weight: 400;
-        letter-spacing: 0;
-        line-height: 1.5;
-        text-transform: uppercase;
-        background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-pink) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
         opacity: 0;
         animation: fadeUp 1.5s ease-out 0.8s forwards;
       }
@@ -209,10 +146,8 @@
         animation: fadeUp 1.5s ease-out 1s forwards;
       }
 
-      .subtitle {
-        font-family: var(--font-body);
+      .hero .subtitle {
         font-size: 0.95rem;
-        font-weight: 300;
         color: var(--text-light);
         letter-spacing: 0.2em;
         margin-bottom: 1.5rem;
@@ -231,7 +166,6 @@
       }
 
       .location {
-        font-family: var(--font-body);
         font-size: 1.3rem;
         font-weight: 600;
         color: var(--text-light);
@@ -252,47 +186,10 @@
       }
 
       @keyframes fadeUp {
-        0% {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
       }
 
-      .button {
-        font-family: var(--font-body);
-        padding: 1rem 2.5rem;
-        border-radius: 4px;
-        text-decoration: none;
-        font-size: 0.85rem;
-        font-weight: 600;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        transition: all 0.3s ease;
-        background: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-grad-start) 100%);
-        color: white;
-        border: 1px solid transparent;
-      }
-
-      .button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(110, 39, 225, 0.3);
-      }
-
-      .button-secondary {
-        background: transparent;
-        border: 1px solid var(--accent-violet);
-        color: white;
-      }
-
-      .button-secondary:hover {
-        background: rgba(110, 39, 225, 0.1);
-      }
-
-      /* About & FAQ sections */
       .about, .faq {
         max-width: 800px;
         width: 100%;
@@ -318,10 +215,7 @@
         margin-bottom: 1.5rem;
       }
 
-      .about-text strong {
-        color: var(--text-light);
-        font-weight: 600;
-      }
+      .about-text strong { color: var(--text-light); font-weight: 600; }
 
       .faq-grid {
         display: grid;
@@ -331,7 +225,6 @@
       }
 
       .faq-item h3 {
-        font-family: var(--font-body);
         font-size: 1rem;
         font-weight: 600;
         color: var(--accent-pink);
@@ -345,25 +238,14 @@
         color: var(--text-dim);
       }
 
-      .faq-item p strong {
-        color: var(--text-light);
-        font-weight: 600;
-      }
-
-      .faq-item a {
-        color: var(--accent-cyan);
-        text-decoration: none;
-      }
-
-      .faq-item a:hover {
-        text-decoration: underline;
-      }
+      .faq-item p strong { color: var(--text-light); font-weight: 600; }
+      .faq-item a { color: var(--accent-cyan); text-decoration: none; }
+      .faq-item a:hover { text-decoration: underline; }
     </style>
 
     <script>
       const canvas = document.getElementById('network');
       const ctx = canvas.getContext('2d');
-      
       let centerX, centerY;
       
       function resize() {
@@ -372,34 +254,28 @@
         centerX = canvas.width / 2;
         centerY = canvas.height / 2;
       }
-      
       resize();
       window.addEventListener('resize', resize);
       
       function pareto(min, alpha) {
-        const u = Math.random();
-        return min / Math.pow(u, 1 / alpha);
+        return min / Math.pow(Math.random(), 1 / alpha);
       }
       
-      // Three node colors
       const nodeColors = [
-        { r: 110, g: 39, b: 225 },   // violet
-        { r: 64, g: 208, b: 213 },   // cyan
-        { r: 242, g: 135, b: 200 }   // pink
+        { r: 110, g: 39, b: 225 },
+        { r: 64, g: 208, b: 213 },
+        { r: 242, g: 135, b: 200 }
       ];
       
       function pickColor() {
         const rand = Math.random();
-        if (rand < 0.55) return nodeColors[0];      // 55% violet
-        if (rand < 0.80) return nodeColors[1];      // 25% cyan
-        return nodeColors[2];                        // 20% pink
+        if (rand < 0.55) return nodeColors[0];
+        if (rand < 0.80) return nodeColors[1];
+        return nodeColors[2];
       }
       
       class Node {
-        constructor() {
-          this.connectedNodes = new Set();
-          this.spawn();
-        }
+        constructor() { this.connectedNodes = new Set(); this.spawn(); }
         
         spawn() {
           this.x = Math.random() * canvas.width;
@@ -408,143 +284,94 @@
           this.radius = Math.random() * 1.5 + 1;
           this.baseOpacity = Math.random() * 0.3 + 0.5;
           this.opacity = 0;
-          
-          // Variable base speed
-          if (Math.random() < 0.05) {
-            this.baseSpeed = 1.2 + Math.random() * 0.4;
-          } else {
-            this.baseSpeed = 0.05 + Math.random() * 0.35;
-          }
+          this.baseSpeed = Math.random() < 0.05 ? 1.2 + Math.random() * 0.4 : 0.05 + Math.random() * 0.35;
           this.currentSpeed = this.baseSpeed;
           this.targetSpeed = this.baseSpeed;
-          
           const angle = Math.random() * Math.PI * 2;
           this.vx = Math.cos(angle) * this.currentSpeed;
           this.vy = Math.sin(angle) * this.currentSpeed;
-          
           this.maxLife = Math.floor((5 + Math.random() * 15) * 60);
           this.life = this.maxLife;
           this.maxConnDist = Math.min(pareto(50, 1.5), 450);
-          
           this.pulsePhase = Math.random() * Math.PI * 2;
           this.pulseSpeed = 0.015 + Math.random() * 0.01;
-          
           this.seeksCenter = false;
           this.connectedNodes.clear();
         }
         
-        connectTo(other) {
-          this.connectedNodes.add(other);
-          this.seeksCenter = true;
-        }
+        connectTo(other) { this.connectedNodes.add(other); this.seeksCenter = true; }
         
         update(nodes) {
           if (this.connectedNodes.size > 0) {
             let maxSpeedInGraph = this.baseSpeed;
-            
-            for (const other of this.connectedNodes) {
-              if (other.baseSpeed > maxSpeedInGraph) {
-                maxSpeedInGraph = other.baseSpeed;
-              }
-            }
-            
+            for (const other of this.connectedNodes) if (other.baseSpeed > maxSpeedInGraph) maxSpeedInGraph = other.baseSpeed;
             this.targetSpeed = maxSpeedInGraph;
             this.currentSpeed += (this.targetSpeed - this.currentSpeed) * 0.02;
           }
           
           if (this.seeksCenter) {
-            const dx = centerX - this.x;
-            const dy = centerY - this.y;
+            const dx = centerX - this.x, dy = centerY - this.y;
             const dist = Math.hypot(dx, dy);
-            
             if (dist > 5) {
-              const targetVx = (dx / dist) * this.currentSpeed;
-              const targetVy = (dy / dist) * this.currentSpeed;
-              this.vx += (targetVx - this.vx) * 0.025;
-              this.vy += (targetVy - this.vy) * 0.025;
+              this.vx += ((dx / dist) * this.currentSpeed - this.vx) * 0.025;
+              this.vy += ((dy / dist) * this.currentSpeed - this.vy) * 0.025;
             }
-            
             if (dist < 80) {
               this.opacity = Math.max(this.opacity - 0.025, 0);
-              if (this.opacity <= 0) {
-                this.spawn();
-                return;
-              }
+              if (this.opacity <= 0) { this.spawn(); return; }
             }
           } else {
             for (const other of nodes) {
               if (other === this) continue;
-              
-              const dx = other.x - this.x;
-              const dy = other.y - this.y;
+              const dx = other.x - this.x, dy = other.y - this.y;
               const dist = Math.hypot(dx, dy);
-              
               if (dist < 120 && dist > 10) {
                 const force = 0.00008 * (1 - dist / 120);
                 this.vx += (dx / dist) * force;
                 this.vy += (dy / dist) * force;
               }
-              
               if (dist < 25 && dist > 0) {
                 const repel = 0.0002 * (1 - dist / 25);
                 this.vx -= (dx / dist) * repel;
                 this.vy -= (dy / dist) * repel;
               }
             }
-            
-            const margin = 50;
-            const pushStrength = 0.0004;
-            if (this.x < margin) this.vx += pushStrength * (margin - this.x);
-            if (this.x > canvas.width - margin) this.vx -= pushStrength * (this.x - (canvas.width - margin));
-            if (this.y < margin) this.vy += pushStrength * (margin - this.y);
-            if (this.y > canvas.height - margin) this.vy -= pushStrength * (this.y - (canvas.height - margin));
+            const margin = 50, push = 0.0004;
+            if (this.x < margin) this.vx += push * (margin - this.x);
+            if (this.x > canvas.width - margin) this.vx -= push * (this.x - (canvas.width - margin));
+            if (this.y < margin) this.vy += push * (margin - this.y);
+            if (this.y > canvas.height - margin) this.vy -= push * (this.y - (canvas.height - margin));
           }
           
-          this.x += this.vx;
-          this.y += this.vy;
-          
+          this.x += this.vx; this.y += this.vy;
           const speed = Math.hypot(this.vx, this.vy);
           if (speed > 0.01) {
-            const targetMagnitude = this.seeksCenter ? this.currentSpeed : this.baseSpeed;
-            this.vx = (this.vx / speed) * targetMagnitude;
-            this.vy = (this.vy / speed) * targetMagnitude;
+            const mag = this.seeksCenter ? this.currentSpeed : this.baseSpeed;
+            this.vx = (this.vx / speed) * mag;
+            this.vy = (this.vy / speed) * mag;
           }
-          
-          const driftAngle = Math.random() * Math.PI * 2;
-          this.vx += Math.cos(driftAngle) * 0.001;
-          this.vy += Math.sin(driftAngle) * 0.001;
-          
-          const fadeInEnd = this.maxLife * 0.9;
-          const fadeOutStart = this.maxLife * 0.15;
+          const drift = Math.random() * Math.PI * 2;
+          this.vx += Math.cos(drift) * 0.001;
+          this.vy += Math.sin(drift) * 0.001;
           
           if (!this.seeksCenter || Math.hypot(centerX - this.x, centerY - this.y) >= 80) {
-            if (this.life > fadeInEnd) {
-              this.opacity = Math.min(this.opacity + 0.025, this.baseOpacity);
-            } else if (this.life < fadeOutStart) {
-              this.opacity = Math.max(this.opacity - 0.015, 0);
-            }
+            if (this.life > this.maxLife * 0.9) this.opacity = Math.min(this.opacity + 0.025, this.baseOpacity);
+            else if (this.life < this.maxLife * 0.15) this.opacity = Math.max(this.opacity - 0.015, 0);
           }
-          
           this.pulsePhase += this.pulseSpeed;
           this.life--;
-          
-          if (this.life <= 0) {
-            this.spawn();
-          }
+          if (this.life <= 0) this.spawn();
         }
         
         draw() {
           if (this.opacity < 0.01) return;
-          
           const pulse = Math.sin(this.pulsePhase) * 0.15 + 0.9;
           const r = this.radius * pulse;
           const c = this.color;
-          
           ctx.beginPath();
           ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(${c.r}, ${c.g}, ${c.b}, ${this.opacity * pulse})`;
           ctx.fill();
-          
           ctx.beginPath();
           ctx.arc(this.x, this.y, r * 3, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(${c.r}, ${c.g}, ${c.b}, ${this.opacity * 0.12})`;
@@ -554,29 +381,20 @@
       
       class Signal {
         constructor(nodeA, nodeB) {
-          this.nodeA = nodeA;
-          this.nodeB = nodeB;
+          this.nodeA = nodeA; this.nodeB = nodeB;
           this.pos = 0;
           this.speed = 0.004 + Math.random() * 0.006;
           this.direction = Math.random() > 0.5 ? 1 : -1;
           if (this.direction < 0) this.pos = 1;
         }
-        
-        update() {
-          this.pos += this.speed * this.direction;
-          return this.pos >= 0 && this.pos <= 1;
-        }
-        
+        update() { this.pos += this.speed * this.direction; return this.pos >= 0 && this.pos <= 1; }
         draw(opacity) {
           const x = this.nodeA.x + (this.nodeB.x - this.nodeA.x) * this.pos;
           const y = this.nodeA.y + (this.nodeB.y - this.nodeA.y) * this.pos;
-          
-          // Signals in pink
           ctx.beginPath();
           ctx.arc(x, y, 2, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(242, 135, 200, ${opacity * 0.8})`;
           ctx.fill();
-          
           ctx.beginPath();
           ctx.arc(x, y, 5, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(242, 135, 200, ${opacity * 0.25})`;
@@ -584,80 +402,48 @@
         }
       }
       
-      const area = window.innerWidth * window.innerHeight;
-      const nodeCount = Math.floor(area / 12000);
-      
-      const nodes = [];
-      for (let i = 0; i < nodeCount; i++) {
-        nodes.push(new Node());
-      }
-      
+      const nodeCount = Math.floor((window.innerWidth * window.innerHeight) / 12000);
+      const nodes = []; for (let i = 0; i < nodeCount; i++) nodes.push(new Node());
       let signals = [];
       
       function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        nodes.forEach(node => node.update(nodes));
+        nodes.forEach(n => n.update(nodes));
         
         for (let i = 0; i < nodes.length; i++) {
           for (let j = i + 1; j < nodes.length; j++) {
-            const a = nodes[i];
-            const b = nodes[j];
+            const a = nodes[i], b = nodes[j];
             const dist = Math.hypot(a.x - b.x, a.y - b.y);
-            
             const maxDist = Math.min(a.maxConnDist, b.maxConnDist);
-            
             if (dist < maxDist) {
-              const strength = 1 - (dist / maxDist);
-              const baseOpacity = 0.08;
-              const opacity = (baseOpacity + strength * 0.45) * Math.min(a.opacity, b.opacity);
-              
+              const strength = 1 - dist / maxDist;
+              const opacity = (0.08 + strength * 0.45) * Math.min(a.opacity, b.opacity);
               if (opacity > 0.06) {
-                a.connectTo(b);
-                b.connectTo(a);
-                
-                // Connection line blends both node colors
-                const mr = (a.color.r + b.color.r) / 2;
-                const mg = (a.color.g + b.color.g) / 2;
-                const mb = (a.color.b + b.color.b) / 2;
-                
+                a.connectTo(b); b.connectTo(a);
                 ctx.beginPath();
                 ctx.moveTo(a.x, a.y);
                 ctx.lineTo(b.x, b.y);
-                ctx.strokeStyle = `rgba(${mr}, ${mg}, ${mb}, ${opacity})`;
+                ctx.strokeStyle = `rgba(${(a.color.r + b.color.r) / 2}, ${(a.color.g + b.color.g) / 2}, ${(a.color.b + b.color.b) / 2}, ${opacity})`;
                 ctx.lineWidth = 0.5 + strength * 1.5;
                 ctx.stroke();
-                
-                if (Math.random() < 0.0005 * strength) {
-                  signals.push(new Signal(a, b));
-                }
+                if (Math.random() < 0.0005 * strength) signals.push(new Signal(a, b));
               }
             }
           }
         }
         
-        signals = signals.filter(signal => {
-          const maxDist = Math.min(signal.nodeA.maxConnDist, signal.nodeB.maxConnDist);
-          const dist = Math.hypot(
-            signal.nodeA.x - signal.nodeB.x,
-            signal.nodeA.y - signal.nodeB.y
-          );
+        signals = signals.filter(s => {
+          const maxDist = Math.min(s.nodeA.maxConnDist, s.nodeB.maxConnDist);
+          const dist = Math.hypot(s.nodeA.x - s.nodeB.x, s.nodeA.y - s.nodeB.y);
           if (dist > maxDist) return false;
-          
-          const alive = signal.update();
-          if (alive) {
-            const strength = 1 - (dist / maxDist);
-            const opacity = strength * Math.min(signal.nodeA.opacity, signal.nodeB.opacity);
-            signal.draw(opacity);
-          }
+          const alive = s.update();
+          if (alive) s.draw((1 - dist / maxDist) * Math.min(s.nodeA.opacity, s.nodeB.opacity));
           return alive;
         });
         
-        nodes.forEach(node => node.draw());
-        
+        nodes.forEach(n => n.draw());
         requestAnimationFrame(animate);
       }
-      
       animate();
     </script>
   </body>
