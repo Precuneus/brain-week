@@ -411,8 +411,14 @@
         ctx.fill();
       }
 
-      // Redraw on resize
-      window.addEventListener('resize', () => location.reload());
+      // Redraw only on width change (avoids mobile address bar resize loop)
+      let lastWidth = window.innerWidth;
+      window.addEventListener('resize', () => {
+        if (window.innerWidth !== lastWidth) {
+          lastWidth = window.innerWidth;
+          location.reload();
+        }
+      });
     </script>
   </body>
 </html>
